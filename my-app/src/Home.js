@@ -1,51 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
 
-<head>
-    <!--Bootstrap-->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible » content="IE=edge">
-    <meta name="viewport » content="width=device-width, initial-scale=1.0">
 
-    <title>Page Title</title>
-
-    <!--Bootstrap css-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
-</head>
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><b>E-Hotel</b></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Acceuil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Ouvrir une session</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-<body>
-
-    
-    <div class="container text-center">
-        <h1>This is a Heading</h1>
-        <p>This is a paragraph.</p>
+const Home = () => {
+    return ( 
+        <div className="home">
+            <div class="container text-center">
+                <h1>This is a Heading</h1>
+                <p>This is a paragraph.</p>
         
-    </div>
-
-    <div class="container">
+            </div>
+            <div class="container">
         <div class="row">
           <div class="col-sm-3"> 
             <p>Affichage des attributs des chambres</p>
@@ -58,7 +23,7 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                <img src="..." class="img-fluid rounded-start" alt="..."/>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -77,25 +42,7 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a
-                                    little bit longer. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                                </p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <!--Affichage de la chambre-->
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
+                            <img src="..." class="img-fluid rounded-start" alt="..."/>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -112,7 +59,24 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
+                            <img src="..." class="img-fluid rounded-start" alt="..."/>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a
+                                    little bit longer. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                                </p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="..."/>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -133,12 +97,9 @@
         </div>
     </div>
 
-    
 
-
-    <!--Bootstrap javascript-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-</body>
-
-</html>
+        </div>
+     );
+}
+ 
+export default Home;
