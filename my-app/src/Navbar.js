@@ -1,32 +1,48 @@
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
-
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
 const Navbar = () => {
-    return ( 
-        
-        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand text-light" href="#"><b>E-Hotel</b></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="index.html">Acceuil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="login.html">Ouvrir une session</a>
-                    </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-     );
-}
- 
+  return (
+    <nav
+      className="navbar navbar-expand-lg bg-body-tertiary bg-dark"
+      data-bs-theme="dark">
+      <div className="container-fluid">
+        <a className="navbar-brand text-light" href="/">
+          <b>E-Hotel</b>
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a
+                className="nav-link active text-light"
+                aria-current="page"
+                href="/">
+                Acceuil
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link text-light" href="/Connection">
+                Se connecter
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
 export default Navbar;
