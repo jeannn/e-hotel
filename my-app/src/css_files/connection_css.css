@@ -1,0 +1,12 @@
+.connectionPage {
+  display: grid;
+  justify-content: center;
+}
+
+.forms {
+  margin: 5em;
+  width: 500px;
+}
+
+.forms div {
+}
