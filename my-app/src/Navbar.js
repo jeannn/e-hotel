@@ -34,10 +34,17 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link text-light" href="/Connection">
+              <a className="nav-link text-light" href="/Login">
                 Se connecter
               </a>
             </li>
+
+            <li className="nav-item">
+              <a className="nav-link text-light" href="/Register">
+                S'inscrire
+              </a>
+            </li>
+
           </ul>
         </div>
       </div>
