@@ -11,7 +11,7 @@ const Home = () => {
       <div className="container">
         <div className="row">
           <div className="col-sm-3">
-            <p>Affichage des attributs des chambres</p>
+            <p>Affichage des attributs des chambres </p>
           </div>
 
           <div className="col">
@@ -33,6 +33,7 @@ const Home = () => {
                         natural lead-in to additional content. This content is a
                         little bit longer. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                       </p>
+                      
                     </div>
                   </div>
                 </div>
