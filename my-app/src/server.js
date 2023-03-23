@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3001
 
-const chaine = require('./chainehotel.js')
+const chaine = require('./databaseAccess.js')
 
 app.use(express.json())
 app.use(function (req, res, next) {
@@ -15,7 +15,7 @@ app.use(function (req, res, next) {
 app.get('/', (req, res) => {
     chaine.getchaine()
     .then(response => {
-        res.status(200).send(response);
+        res.render(response);
     })
     .catch(error => {
       res.status(500).send(error);

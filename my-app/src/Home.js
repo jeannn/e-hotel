@@ -1,8 +1,20 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min";
+import React, {useState, useEffect} from 'react';
 
-const Home = () => {
+function Home(){
+
+  const [chaine,setchaine] = useState();
+  useEffect(()=> {
+    fetch('http://localhost:3001')
+    .then((Response)=> Response.json())
+    .then((data)=> {setchaine(data)})
+  },[])
+
+  
+
   return (
+    
     <div className="home">
       <div className="container text-center">
         <h1>This is a Heading</h1>
@@ -12,6 +24,7 @@ const Home = () => {
         <div className="row">
           <div className="col-sm-3">
             <p>Affichage des attributs des chambres </p>
+            {chaine}
           </div>
 
           <div className="col">
