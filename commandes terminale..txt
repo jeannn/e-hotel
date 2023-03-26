@@ -1,0 +1,15 @@
+Pour faire fonctionner le site web il faut d'abord demarer le serveur,ouvrir un terminale,cd dans serveur et ecrire: node index.js
+
+ensuite, ouvrir un deuxième terminale, cd siteweb, et ecrire: npm start 
+
+
+commandes terminale. 
+
+cd serveur
+npm init
+npm i express pg
+cd..
+cd siteweb
+npx create-react-app siteweb
+npm i bootstarp
+npm i react-router-dom
