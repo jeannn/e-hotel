@@ -22,7 +22,7 @@ const Navbar = () => {
         </button>
         <div
           className="collapse navbar-collapse justify-content-end"
-          id="navbarNav">
+          id="navbarNav"> 
           <ul className="navbar-nav">
             <li className="nav-item">
               <a
