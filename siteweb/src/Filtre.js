@@ -1,7 +1,7 @@
 import React from "react";
 import { useState,useEffect } from "react";
 
-const Filtre = ({setItem, filtres}) =>{
+const Filtre = ({filterItem,setItem, menuFiltres}) =>{
     const [chambre, setChambre] = useState([]);
     useEffect(() => {
         getChambre();
@@ -16,26 +16,25 @@ const Filtre = ({setItem, filtres}) =>{
         }
     }
     
+    //menufiltre.map affiche le contenu de la colonne selectionné de la database
     return (
         <>
-            <div class="capacite">
-            <h6>Capacité</h6>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="simple" id="defaultCheck1C"/>
-              <label class="form-check-label" for="defaultCheck1C">1 personne</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="double" id="defaultCheck2C"/>
-              <label class="form-check-label" for="defaultCheck2C">2 personnes</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="triple" id="defaultCheck3C"/>
-              <label class="form-check-label" for="defaultCheck3C">3 personnes</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="quadruple" id="defaultCheck4C"/>
-              <label class="form-check-label" for="defaultCheck4C">4 personnes</label>
-            </div>
+          <div>
+                
+            <button className="btn-light text-dark btn-sm btn fw-bold" onClick={() => setItem(chambre)}>
+              Tous
+            </button>
+            {menuFiltres.map((Val, id) => {
+              return (
+                <div>
+                  <button className="btn-light text-dark btn-sm btn fw-bold"onClick={() => filterItem(Val)} key={id}>
+                    {Val}
+                    <br />
+                  </button>
+                </div>   
+              );
+            })}
+              
           </div>
         </>
     )

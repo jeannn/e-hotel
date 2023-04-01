@@ -19,8 +19,29 @@ function App() {
     }
   }
 
-  //filtre pour afficher toutes les capacités de chambre
-  const filtreCapacite = [...new Set(chambre.map((Val) => Val.capacite))];
+  //menu affichant toutes les capacités de chambre (nom des colonnes)
+  const menuCapacite = [...new Set(chambre.map((Val) => Val.capacite))];
+
+  //méthode de filtrage
+  const filtrerCapacite = (curcat) => {
+    const newItem = chambre.filter((newVal) => {
+      return newVal.capacite === curcat; 
+        	// comparer les categories pour afficher les données
+    });
+    setChambre(newItem);
+  };
+
+  //menu affichant toutes les capacités de chambre (nom des colonnes)
+  const menuEtoile = [...new Set(chambre.map((Val) => Val.classement))];
+
+  //méthode de filtrage
+  const filtrerEtoile = (curcat) => {
+    const newItem = chambre.filter((newVal) => {
+      return newVal.classement === curcat; 
+        	// comparer les categories pour afficher les données
+    });
+    setChambre(newItem);
+  };
 
   
   //map permet d'afficher les info de la database sous forme de tableau
@@ -34,37 +55,15 @@ function App() {
       <br />
 
       <div class="row">
+
         <div class="col-sm-2">
           <h5 class="border-dark">Filtrer par</h5>
-
-          <div class="etoile">
-            <h6>Étoiles</h6>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="1 etoile" id="defaultCheck1E"/>
-              <label class="form-check-label" for="defaultCheck1E">1 étoile</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="2 etoile" id="defaultCheck2E"/>
-              <label class="form-check-label" for="defaultCheck2E">2 étoile</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="3 etoile" id="defaultCheck3E"/>
-              <label class="form-check-label" for="defaultCheck3E">3 étoile</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="4 etoile" id="defaultCheck4E"/>
-              <label class="form-check-label" for="defaultCheck4E">4 étoile</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="5 etoile" id="defaultCheck5E"/>
-              <label class="form-check-label" for="defaultCheck5E">5 étoile</label>
-            </div>
-          </div>
-
-          <br />
-
           
-          <Filtre setItem={setChambre} filtres={filtreCapacite}/>
+          <h6>Étoiles</h6>
+          <Filtre setItem={setChambre} menuFiltres={menuEtoile} filterItem={filtrerEtoile}/>
+          <br />
+          <h6>Capacité</h6>
+          <Filtre setItem={setChambre} menuFiltres={menuCapacite} filterItem={filtrerCapacite}/>
           
         </div>
         
