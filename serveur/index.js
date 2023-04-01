@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const cha = express()
 const port = 3001
 
 const chambre = require('./chambre')

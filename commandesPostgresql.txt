@@ -1,9 +1,6 @@
 nb: location_id et reservation_id sont des foreign key pointant vers le numéro de chambre
 
-CREATE TABLE chaineHotel(nomChaineHotel varchar(20),
-									  numTelChaine char(10), nombreHotel int,
-                                                        adresseCourrielChaine varchar(80),
-									 adresseBureau varchar (80), PRIMARY KEY(nomChaineHotel));
+
 
 
 CREATE TABLE hotel(nomHotel varchar(20),numTelHotel varchar(10),

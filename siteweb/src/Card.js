@@ -7,10 +7,10 @@ const Card = ({chambre}) => {
                 <div class="card border-dark mb-3" key = {val.numchambre}>
 
                     <div class="row g-0">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <h1> {val.nomhotel}</h1>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             <div class="card-body">
                                 <h5 class="card-title"><b></b>Description de la chambre</h5>
                                 <p class="card-text">Capacité de la chambre : lit {val.capacite}, 

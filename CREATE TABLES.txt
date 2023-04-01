@@ -1,0 +1,106 @@
+--J'avais modifié les tableau, voici le sql copié colé de pgsql
+
+
+
+CREATE TABLE IF NOT EXISTS public.chainehotel
+(
+    nomchainehotel character varying(20),
+    numtelchaine char(10),
+    nombrehotel integer,
+    adressecourrielchaine varchar(80),
+    adressebureau varchar(80),
+    PRIMARY KEY (nomchainehotel)
+);
+
+CREATE TABLE IF NOT EXISTS public.chambre
+(
+    numchambre character varying(3) COLLATE pg_catalog."default" NOT NULL,
+    nomhotel character varying(20) COLLATE pg_catalog."default",
+    capacite character varying(10) COLLATE pg_catalog."default",
+    commodite character varying(80) COLLATE pg_catalog."default",
+    vuechambre character varying(80) COLLATE pg_catalog."default",
+    etendue character varying(20) COLLATE pg_catalog."default",
+    probleme character varying(80) COLLATE pg_catalog."default",
+    prix integer DEFAULT 100,
+    CONSTRAINT chambre_pkey PRIMARY KEY (numchambre),
+    CONSTRAINT chambre_nomhotel_fkey FOREIGN KEY (nomhotel)
+        REFERENCES public.hotel (nomhotel) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS public.client
+(
+    nas_client character varying(9) COLLATE pg_catalog."default" NOT NULL,
+    numtelclient character varying(10) COLLATE pg_catalog."default",
+    nomcomplet character varying(80) COLLATE pg_catalog."default",
+    adressecourrielclient character varying(80) COLLATE pg_catalog."default",
+    adresseclient character varying(80) COLLATE pg_catalog."default",
+    reservation character varying(3) COLLATE pg_catalog."default",
+    "motDePasse" character varying(80) COLLATE pg_catalog."default",
+    CONSTRAINT client_pkey PRIMARY KEY (nas_client)
+);
+
+CREATE TABLE IF NOT EXISTS public.employe
+(
+    nomcompletemp character varying(80) COLLATE pg_catalog."default" NOT NULL,
+    numtelemp character varying(10) COLLATE pg_catalog."default",
+    adressecourrielemp character varying(80) COLLATE pg_catalog."default",
+    posteoccupe character varying(3) COLLATE pg_catalog."default",
+    CONSTRAINT employe_pkey PRIMARY KEY (nomcompletemp)
+);
+
+CREATE TABLE IF NOT EXISTS public.hotel
+(
+    nomhotel character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    numtelhotel character varying(10) COLLATE pg_catalog."default",
+    nombrechambre integer,
+    adressecourrielhotel character varying(80) COLLATE pg_catalog."default",
+    adressehotel character varying(80) COLLATE pg_catalog."default",
+    classement character varying(8) COLLATE pg_catalog."default",
+    nomchainehotel character varying(20) COLLATE pg_catalog."default",
+    CONSTRAINT hotel_pkey PRIMARY KEY (nomhotel),
+    CONSTRAINT hotel_nomchainehotel_fkey FOREIGN KEY (nomchainehotel)
+        REFERENCES public.chainehotel (nomchainehotel) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS public.locations
+(
+    location_id character varying(5) COLLATE pg_catalog."default" NOT NULL,
+    nas_client character varying(9) COLLATE pg_catalog."default",
+    nomcompletemp character varying(80) COLLATE pg_catalog."default",
+    dateloue character varying(10) COLLATE pg_catalog."default",
+    CONSTRAINT locations_pkey PRIMARY KEY (location_id),
+    CONSTRAINT locations_location_id_fkey FOREIGN KEY (location_id)
+        REFERENCES public.chambre (numchambre) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT locations_nas_client_fkey FOREIGN KEY (nas_client)
+        REFERENCES public.client (nas_client) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT locations_nomcompletemp_fkey FOREIGN KEY (nomcompletemp)
+        REFERENCES public.employe (nomcompletemp) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+CREATE TABLE IF NOT EXISTS public.reservation
+(
+    reservation_id character varying(5) COLLATE pg_catalog."default" NOT NULL,
+    datereserve character varying(10) COLLATE pg_catalog."default",
+    nas_client character varying(9) COLLATE pg_catalog."default",
+    CONSTRAINT reservation_pkey PRIMARY KEY (reservation_id),
+    CONSTRAINT reservation_nas_client_fkey FOREIGN KEY (nas_client)
+        REFERENCES public.client (nas_client) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT reservation_reservation_id_fkey FOREIGN KEY (reservation_id)
+        REFERENCES public.chambre (numchambre) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+
+
