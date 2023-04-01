@@ -13,15 +13,16 @@ const Card = ({chambre}) => {
                         <div class="col-md-7">
                             <div class="card-body">
                                 <h5 class="card-title"><b></b>Description de la chambre</h5>
-                                <p class="card-text">Capacité de la chambre : lit {val.capacite}, 
-                                    <br />
-                                    La chambre posséde les commoditées suivantes: {val.commodite}
-                                    <br />
-                                    Cette chambre à aussi une {val.vuechambre}
-                                    <br />
-                                    Les problèmes concernant la chambre sont: {val.probleme}
-                                    <br />
-                                    Possibilité d'augmenter la capacité de la chambre: {val.etendue}
+                                <p class="card-text">
+                                    Capacité de la chambre : {val.capacite} 
+                                    
+                                    <br /> La chambre posséde les commoditées suivantes: {val.commodite}
+                                    
+                                    <br /> Cette chambre à aussi une {val.vuechambre}
+                                    
+                                    <br /> Les problèmes concernant la chambre sont: {val.probleme}
+                                    
+                                    <br /> Possibilité d'augmenter la capacité de la chambre: {val.etendue}
                                 </p>
                             
                             </div>

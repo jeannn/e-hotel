@@ -8,9 +8,9 @@ const pool = new Pool({
 });
 
 //selection le tableau chambre join au tableau hotel
-const getChambre = () => {
+const getChambreHotel = () => {
   return new Promise(function(resolve, reject) {
-    pool.query('SELECT * FROM chambre natural join hotel', (error, results) => {
+    pool.query('SELECT * FROM chambre natural join hotel order by classement', (error, results) => {
       if (error) {
         reject(error)
       }
@@ -42,5 +42,5 @@ const getChaineHotelChambre = () => {
   
   
   module.exports = {
-    getChambre,getChaineHotelChambre,getChaine,
+    getChambreHotel,getChaineHotelChambre,getChaine,
   }

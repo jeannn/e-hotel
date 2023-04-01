@@ -1,55 +1,106 @@
 import React, {useEffect, useState } from 'react';
-import Card from './Card';
-import Filtre from './Filtre';
+import Card from './composants/Card';
+import Filtre from './composants/Filtre';
+import FiltreTout from './composants/FiltreTout';
 
-function App() {
+function Home() {
 
   //récupération des données de chambre
-  const [chambre, setChambre] = useState([]);
+  const [chambreHotel, setChambreHotel] = useState([]);
   useEffect(() => {
-    getChambre();
+    getChambreHotel();
   },[]);
-  const getChambre = async () =>{
+  const getChambreHotel = async () =>{
     try{
       const response = await fetch('http://localhost:3001')
       const jsonData = await response.json()
-      setChambre(jsonData)
+      setChambreHotel(jsonData)
     }catch(err){
       console.log(err.message)
     }
   }
 
-  //menu affichant toutes les capacités de chambre (nom des colonnes)
-  const menuCapacite = [...new Set(chambre.map((Val) => Val.capacite))];
+  /* 
+  Début methode filtrage 
+  */
+  //menu affichant toutes les categories d'hotel
+  const menuEtoile = [...new Set(chambreHotel.map((Val) => Val.classement))];
 
-  //méthode de filtrage
-  const filtrerCapacite = (curcat) => {
-    const newItem = chambre.filter((newVal) => {
-      return newVal.capacite === curcat; 
-        	// comparer les categories pour afficher les données
-    });
-    setChambre(newItem);
-  };
-
-  //menu affichant toutes les capacités de chambre (nom des colonnes)
-  const menuEtoile = [...new Set(chambre.map((Val) => Val.classement))];
-
-  //méthode de filtrage
+  //méthode de filtrage categories d'hotel
   const filtrerEtoile = (curcat) => {
-    const newItem = chambre.filter((newVal) => {
+    const newItem = chambreHotel.filter((newVal) => {
       return newVal.classement === curcat; 
         	// comparer les categories pour afficher les données
     });
-    setChambre(newItem);
+    setChambreHotel(newItem);
   };
 
+  //menu affichant tout les nombre de chambre dans l'hotel
+  const menuNombre = [...new Set(chambreHotel.map((Val) => Val.nombrechambre))];
+
+  //méthode de filtrage nombre chambre
+  const filtrerNombre = (curcat) => {
+    const newItem = chambreHotel.filter((newVal) => {
+      return newVal.nombrechambre === curcat; 
+        	// comparer les nombre chambre pour afficher les données
+    });
+    setChambreHotel(newItem);
+  };
+
+  //menu affichant tout les chaine hotelière
+  const menuChaine = [...new Set(chambreHotel.map((Val) => Val.nomchainehotel))];
+
+  //méthode de filtrage chaine
+  const filtrerChaine = (curcat) => {
+    const newItem = chambreHotel.filter((newVal) => {
+      return newVal.nomchainehotel === curcat; 
+        	// comparer les chaines pour afficher les données
+    });
+    setChambreHotel(newItem);
+  };
+
+    //menu affichant tout les hotel
+    const menuHotel = [...new Set(chambreHotel.map((Val) => Val.nomhotel))];
+
+    //méthode de filtrage hotel
+    const filtrerHotel = (curcat) => {
+      const newItem = chambreHotel.filter((newVal) => {
+        return newVal.nomhotel === curcat; 
+            // comparer les nom d'hotel pour afficher les données
+      });
+      setChambreHotel(newItem);
+    };
+
+      //menu affichant tout les capacité chambre
+      const menuCapacite = [...new Set(chambreHotel.map((Val) => Val.capacite))];
+
+      //méthode de filtrage capacité
+      const filtrerCapacite = (curcat) => {
+        const newItem = chambreHotel.filter((newVal) => {
+          return newVal.capacite === curcat; 
+        });
+        setChambreHotel(newItem);
+      };
+      //menu affichant tout les prix
+      const menuPrix = [...new Set(chambreHotel.map((Val) => Val.prix))];
+
+      //méthode de filtrage prix
+      const filtrerPrix = (curcat) => {
+        const newItem = chambreHotel.filter((newVal) => {
+          return newVal.prix === curcat; 
+        });
+        setChambreHotel(newItem);
+      };
+ /* 
+  fin methode filtrage 
+  */
   
   //map permet d'afficher les info de la database sous forme de tableau
   // <filtre ..../> permet d'appeler le fichier filtre avec les valeurs spécifiés
   return (
     <div class="container ">
       
-      <h1 className='text-center'>Bienvenu</h1>
+      <h1 className='text-center'>Bienvenu sur Le site de reservation de chambre</h1>
 
       <br />
       <br />
@@ -57,19 +108,39 @@ function App() {
       <div class="row">
 
         <div class="col-sm-2">
-          <h5 class="border-dark">Filtrer par</h5>
+          <h4>Filtrer par</h4>
           
-          <h6>Étoiles</h6>
-          <Filtre setItem={setChambre} menuFiltres={menuEtoile} filterItem={filtrerEtoile}/>
-          <br />
-          <h6>Capacité</h6>
-          <Filtre setItem={setChambre} menuFiltres={menuCapacite} filterItem={filtrerCapacite}/>
+          <h6>Tous</h6>
+          <FiltreTout setItem={setChambreHotel}/>
+          
+          <h5><br />Les Hotels <br /></h5>
+          <h6><br />Chaine Hotelière</h6>
+          <Filtre menuFiltres={menuChaine} filterItem={filtrerChaine}/>
+
+          <h6> <br/> Étoile</h6>
+          <Filtre menuFiltres={menuEtoile} filterItem={filtrerEtoile}/>
+
+          <h6> <br/> Hotels</h6>
+          <Filtre menuFiltres={menuHotel} filterItem={filtrerHotel}/>
+
+          <h6><br/>Nombre de chambres dans l'hotel</h6>
+          <Filtre menuFiltres={menuNombre} filterItem={filtrerNombre}/>
+
+          <h5><br />Les Chambres <br /></h5>
+
+          <h6><br/>Capacité de la chambre</h6>
+          <Filtre menuFiltres={menuCapacite} filterItem={filtrerCapacite}/>
+
+          <h6><br/>Liste des prix</h6>
+          <Filtre menuFiltres={menuPrix} filterItem={filtrerPrix}/>
+          
           
         </div>
         
         <div class="col-sm">
         
-          <Card chambre={chambre}/>
+          <Card chambre={chambreHotel}/>
+
 
         </div>
       </div>
@@ -77,4 +148,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Home;
