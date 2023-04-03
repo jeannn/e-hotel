@@ -1,0 +1,28 @@
+/* login page css */
+.loginpage {
+  display: grid;
+  justify-content: center;
+}
+
+.pageheader {
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
+}
+.formheader {
+  display: flex;
+  justify-content: center;
+}
+
+.loginforms {
+  margin-top: 4em;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #ccc;
+  padding: 20px;
+}
+
+.emailpwforms div {
+  margin: 1em;
+}
