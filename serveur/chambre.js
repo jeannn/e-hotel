@@ -18,9 +18,9 @@ const getChambreHotel = () => {
     })
   }) 
 }
-const getChaine = () => {
+const getClients = () => {
   return new Promise(function(resolve, reject) {
-    pool.query('SELECT * FROM chainehotel', (error, results) => {
+    pool.query('SELECT * FROM client left join reservation on client.nas_client = reservation.nas_client left join locations on client.nas_client = locations.nas_client', (error, results) => {
       if (error) {
         reject(error)
       }
@@ -42,5 +42,5 @@ const getChaineHotelChambre = () => {
   
   
   module.exports = {
-    getChambreHotel,getChaineHotelChambre,getChaine,
+    getChambreHotel,getChaineHotelChambre,getClients,
   }

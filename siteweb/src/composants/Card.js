@@ -8,7 +8,7 @@ const Card = ({chambre}) => {
 
                     <div class="row g-0">
                         <div class="col-md-3">
-                            <h1> {val.nomhotel}</h1>
+                            <h1 className='text-center'> {val.nomhotel}</h1>
                         </div>
                         <div class="col-md-7">
                             <div class="card-body">
