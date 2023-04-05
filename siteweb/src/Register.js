@@ -22,23 +22,25 @@ const Register = () => {
                           <div class="form-outline">
                             <input
                               type="text"
-                              id="firstName"
+                              id="name"
                               class="form-control form-control-lg"
+                              placeholder="John Doe"
                             />
-                            <label class="form-label" for="firstName">
-                              First Name
+                            <label class="form-label" for="name">
+                              First and Last Name
                             </label>
                           </div>
                         </div>
                         <div class="col-md-6 mb-4">
                           <div class="form-outline">
                             <input
-                              type="text"
-                              id="lastName"
+                              type="number"
+                              id="sinNumber"
                               class="form-control form-control-lg"
+                              placeholder="XXXXXXXXX"
                             />
-                            <label class="form-label" for="lastName">
-                              Last Name
+                            <label class="form-label" for="sinNumber">
+                              SIN Number
                             </label>
                           </div>
                         </div>
@@ -48,62 +50,16 @@ const Register = () => {
                         <div class="col-md-6 mb-4 d-flex align-items-center">
                           <div class="form-outline datepicker w-100">
                             <input
-                              type="text"
+                              type="tel"
                               class="form-control form-control-lg"
-                              id="birthdayDate"
+                              id="phoneNumber"
                             />
 
-                            <label for="birthdayDate" class="form-label">
-                              Birthday
+                            <label for="phoneNumber" class="form-label">
+                              Phone Number
                             </label>
                           </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                          <h6 class="mb-2 pb-1">Gender:</h6>
-
-                          <div class="form-check form-check-inline">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="inlineRadioOptions"
-                              id="femaleGender"
-                              value="option1"
-                              checked
-                            />
-                            <label class="form-check-label" for="femaleGender">
-                              Female
-                            </label>
-                          </div>
-
-                          <div class="form-check form-check-inline">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="inlineRadioOptions"
-                              id="maleGender"
-                              value="option2"
-                            />
-                            <label class="form-check-label" for="maleGender">
-                              Male
-                            </label>
-                          </div>
-
-                          <div class="form-check form-check-inline">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="inlineRadioOptions"
-                              id="otherGender"
-                              value="option3"
-                            />
-                            <label class="form-check-label" for="otherGender">
-                              Other
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
                         <div class="col-md-6 mb-4 pb-2">
                           <div class="form-outline">
                             <input
@@ -116,33 +72,36 @@ const Register = () => {
                             </label>
                           </div>
                         </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input
+                              type="password"
+                              id="password"
+                              class="form-control form-control-lg"
+                            />
+                            <label class="form-label" for="password">
+                              New Password
+                            </label>
+                          </div>
+                        </div>
                         <div class="col-md-6 mb-4 pb-2">
                           <div class="form-outline">
                             <input
                               type="tel"
-                              id="phoneNumber"
+                              id="reservationNumber"
                               class="form-control form-control-lg"
                             />
-                            <label class="form-label" for="phoneNumber">
-                              Phone Number
+                            <label class="form-label" for="reservationNumber">
+                              Reservation Number
                             </label>
                           </div>
                         </div>
                       </div>
 
-                      <div class="row">
-                        <div class="col-12">
-                          <select class="select form-control-lg">
-                            <option value="1">Choisissez une option</option>
-                            <option value="2">Employeur</option>
-                            <option value="3">Employée</option>
-                            <option value="4">Client</option>
-                          </select>
-                          <label class="form-label select-label">
-                            Choose option
-                          </label>
-                        </div>
-                      </div>
+                      <div class="row"></div>
 
                       <div class="mt-4 pt-2">
                         <input
