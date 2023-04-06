@@ -2,7 +2,7 @@ const Login = () => {
   return (
     <div class="loginpage">
       <div class="pageheader">
-        <h1>Login to your E-Hotel account</h1>
+        <h1>Connectez vous a votre compte</h1>
       </div>
 
       <div class="loginforms">
@@ -11,22 +11,22 @@ const Login = () => {
         </div>
         <form class="emailpwforms">
           <div class="emailForm form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="exampleInputEmail1">NAS</label>
             <input
-              type="email"
+              type="number"
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-              placeholder="Enter email"
+              placeholder="Entrer votre NAS"
             />
           </div>
           <div class="pwForm form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1">Mot de passe</label>
             <input
               type="password"
               class="form-control"
               id="exampleInputPassword1"
-              placeholder="Password"
+              placeholder="Mot de passe"
             />
           </div>
 
