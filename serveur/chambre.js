@@ -34,10 +34,10 @@ const getClients = () => {
     );
   });
 };
-const getChaineHotelChambre = () => {
+const getEmploye = () => {
   return new Promise(function (resolve, reject) {
     pool.query(
-      "select * from chambre left join hotel on chambre.nomhotel = hotel.nomhotel left join chainehotel on chainehotel.nomchainehotel = hotel.nomchainehotel",
+      "SELECT * FROM employe",
       (error, results) => {
         if (error) {
           reject(error);
@@ -48,8 +48,64 @@ const getChaineHotelChambre = () => {
   });
 };
 
+const createChambre = (body) => {
+  return new Promise(function(resolve, reject) {
+    const { numchambre, nomhotel,capacite,commodite,vuechambre,etendue,probleme,prix } = body
+    pool.query('INSERT INTO chambre (numchambre, nomhotel,capacite,commodite,vuechambre,etendue,probleme,prix) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', 
+    [numchambre, nomhotel,capacite,commodite,vuechambre,etendue,probleme,prix], 
+    (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(`Une nouvelle chambre a été ajouté`)
+    })
+  })
+}
+const createClient = (body) => {
+  return new Promise(function(resolve, reject) {
+    const { nas_client, numtelclient,nomcomplet,adressecourrielclient,motdepasse } = body
+
+    pool.query('INSERT INTO client (nas_client, numtelclient,nomcomplet,adressecourrielclient,motdepasse) VALUES ($1, $2, $3, $4, $5) RETURNING *', 
+    [nas_client, numtelclient,nomcomplet,adressecourrielclient,motdepasse], 
+    (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(`Un nouvelle client a été créé`)
+    })
+  })
+}
+
+const deleteChambre = () => {
+  return new Promise(function(resolve, reject) {
+    const numchambre = parseInt(request.params.numchambre)
+    pool.query('DELETE FROM chambre WHERE chambre.numchambre = $1 and hotel.nomhotel=$2', [numchambre,nomhotel], (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(`chambre ${numchambre} appartenant à ${nomhotel} à été éffacé`)
+    })
+  })
+}
+const deleteClient = () => {
+  return new Promise(function(resolve, reject) {
+    const id = parseInt(request.params.id)
+    pool.query('DELETE FROM client WHERE nas_client=$1', [nas_client], (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(`Client possédant le nas: ${nas_client} a été effacé`)
+    })
+  })
+}
+
+
 module.exports = {
   getChambreHotel,
-  getChaineHotelChambre,
   getClients,
+  getEmploye,
+  createChambre,
+  createClient,
+  deleteChambre,
+  deleteClient,
 };

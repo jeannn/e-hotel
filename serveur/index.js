@@ -53,6 +53,15 @@ dataClient.get("/", (req, res) => {
       res.status(500).send(error);
     });
 });
+dataClient.post('/client', (req, res) => {
+  chambre.createClient(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 dataClient.listen(port8080, () => {
   console.log(`App running on port ${port8080}.`);
 });
@@ -61,15 +70,7 @@ dataClient.listen(port8080, () => {
 
 
 /*template pour inserer et delete
-  app.post('/merchants', (req, res) => {
-  merchant_model.createMerchant(req.body)
-  .then(response => {
-    res.status(200).send(response);
-  })
-  .catch(error => {
-    res.status(500).send(error);
-  })
-})
+  
 
 app.delete('/merchants/:id', (req, res) => {
   merchant_model.deleteMerchant(req.params.id)
