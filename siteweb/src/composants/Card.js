@@ -4,30 +4,40 @@ const Card = ({ chambre }) => {
   return (
     <>
       {chambre.map((val) => (
-        <div class="card border-dark mb-3" key={val.numchambre}>
-          <div class="row g-0">
-            <div class="col-md-3">
+        <div className="card " key={val.numchambre}>
+          <div className="row g-0">
+            <div className="col-md-3">
               <h1 className="text-center"> {val.nomhotel}</h1>
             </div>
-            <div class="col-md-7">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <b></b>Description de la chambre
-                </h5>
-                <p class="card-text">
-                  Capacité de la chambre : {val.capacite}
-                  <br /> La chambre posséde les commoditées suivantes:{" "}
-                  {val.commodite}
-                  <br /> Cette chambre à aussi une {val.vuechambre}
-                  <br /> Les problèmes concernant la chambre sont:{" "}
-                  {val.probleme}
-                  <br /> Possibilité d'augmenter la capacité de la chambre:{" "}
-                  {val.etendue}
+            <div className="col-md-7">
+              <div className="card-body">
+                <h3 className="card-title">Description de la chambre</h3>
+                <p className="card-text">
+                  <span className="point1">
+                    <b>Capacité de la chambre : </b>
+                    {val.capacite}
+                  </span>
+                  <span className="point1">
+                    <b>Les commoditées: </b>
+                    {val.commodite}
+                  </span>
+                  <span>
+                    <b>La vue: </b>
+                    {val.vuechambre}
+                  </span>
+                  <span className="point1">
+                    <b>Les inconvénients: </b>
+                    {val.probleme}{" "}
+                  </span>
+                  <span className="point1">
+                    <b>Possibilité d'augmenter la capacité de la chambre:</b>{" "}
+                    {val.etendue}
+                  </span>
                 </p>
               </div>
             </div>
-            <div className="col">
-              <h5>
+            <div className="pricecol col">
+              <h5 className="price">
                 Prix: <b>{val.prix}$</b>
               </h5>
             </div>

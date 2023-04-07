@@ -100,7 +100,7 @@ function Home() {
   // <filtre ..../> permet d'appeler le fichier filtre avec les valeurs spécifiés
   return (
     <div class="container ">
-      <h1 className="text-center">
+      <h1 className="hometext text-center">
         Bienvenu sur Le site de reservation de chambre
       </h1>
 
@@ -108,7 +108,7 @@ function Home() {
       <br />
 
       <div class="row">
-        <div class="col-sm-2">
+        <div class="filterCol col-sm-2">
           <h4>Filtrer par</h4>
 
           <h6>Tous</h6>

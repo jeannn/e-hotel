@@ -31,7 +31,6 @@ dataChambre.listen(port3001, () => {
   console.log(`App running on port ${port3001}.`);
 });
 
-
 /* affichage de la table client fusionné avec reservation et location sur le port 8080*/
 dataClient.use(express.json());
 dataClient.use(function (req, res, next) {
@@ -53,21 +52,19 @@ dataClient.get("/", (req, res) => {
       res.status(500).send(error);
     });
 });
-dataClient.post('/client', (req, res) => {
-  chambre.createClient(req.body)
-  .then(response => {
-    res.status(200).send(response);
-  })
-  .catch(error => {
-    res.status(500).send(error);
-  })
-})
+dataClient.post("/client", (req, res) => {
+  chambre
+    .createClient(req.body)
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
 dataClient.listen(port8080, () => {
   console.log(`App running on port ${port8080}.`);
 });
-
-
-
 
 /*template pour inserer et delete
   
@@ -81,8 +78,3 @@ app.delete('/merchants/:id', (req, res) => {
     res.status(500).send(error);
   })
 })*/
-
-
-
-
-
