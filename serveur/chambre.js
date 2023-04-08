@@ -34,20 +34,7 @@ const getClients = () => {
     );
   });
 };
-const getClient = (nas) => {
-  let nas_client = nas;
-  return new Promise(function (resolve, reject) {
-    pool.query(
-      "SELECT motdepasse FROM client where nas_client=$1",[nas_client],
-      (error, results) => {
-        if (error) {
-          reject(error);
-        }
-        resolve(results.rows);
-      }
-    );
-  });
-};
+
 const getEmploye = () => {
   return new Promise(function (resolve, reject) {
     pool.query(

@@ -7,7 +7,11 @@ const Card = ({ chambre }) => {
         <div class="card border-dark mb-3" key={val.numchambre}>
           <div class="row g-0">
             <div class="col-md-3">
+              
+              {/* La photo pour la chambre vient ici a la place du text ci-dessous */}
               <h1 className="text-center"> {val.nomhotel}</h1>
+
+              
             </div>
             <div class="col-md-7">
               <div class="card-body">
