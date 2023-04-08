@@ -52,7 +52,6 @@ const Navbar = () => {
                 S'inscrire
               </a>
             </li>
-<<<<<<< HEAD
             <li className="nav-item">
               
               <a className="nav-link text-light" href="/" onClick={deco}>
@@ -62,8 +61,6 @@ const Navbar = () => {
               
             </li>
 
-=======
->>>>>>> 56250cd (hh commit apr 8)
           </ul>
         </div>
       </div>
