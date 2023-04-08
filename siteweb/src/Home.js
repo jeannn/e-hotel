@@ -5,9 +5,17 @@ import FiltreTout from "./composants/FiltreTout";
 
 function Home() {
 
+  //recupère le compte du stockage
+  let co = sessionStorage.getItem("connectee");
+  let nom="";
   
- 
-  
+  if (co=="connecte"){
+    let x = sessionStorage.getItem("compte");
+    let compte = JSON.parse(x);
+    nom = compte.nomcomplet
+  }else{
+    nom = ""
+  }
 
   //récupération des données de chambre
   const [chambreHotel, setChambreHotel] = useState([]);
@@ -106,7 +114,7 @@ function Home() {
   return (
     <div class="container ">
       <h1 className="hometext text-center">
-        Bienvenu sur Le site de reservation de chambre {}
+        Bienvenu sur Le site de reservation de chambre {nom}
       </h1>
 
       <br />
@@ -121,7 +129,7 @@ function Home() {
 
           <h5>
             <br />
-            Les Hotels <br />
+            Les Hotels <br /> 
           </h5>
           <h6>
             <br />

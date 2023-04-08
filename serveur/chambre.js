@@ -48,6 +48,19 @@ const getEmploye = () => {
     );
   });
 };
+const getreservationlocation = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query(
+      "SELECT * FROM reservation natural join locations",
+      (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(results.rows);
+      }
+    );
+  });
+};
 
 const createChambre = (body) => {
   return new Promise(function(resolve, reject) {
@@ -73,6 +86,21 @@ const createClient = (body) => {
         reject(error)
       }
       resolve(`Un nouvelle client a été créé`)
+    })
+  })
+}
+
+const createRes = (body) => {
+  return new Promise(function(resolve, reject) {
+    const { reservation_id, datereserve,nas_client } = body
+
+    pool.query('INSERT INTO reservation (reservation_id, datereserve,nas_client) VALUES ($1, $2, $3) RETURNING *', 
+    [reservation_id, datereserve,nas_client], 
+    (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(`Une nouvelle reservation a été créé`)
     })
   })
 }
@@ -109,5 +137,6 @@ module.exports = {
   createClient,
   deleteChambre,
   deleteClient,
-  
+  getreservationlocation,
+  createRes,
 };

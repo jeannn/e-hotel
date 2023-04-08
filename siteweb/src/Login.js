@@ -27,7 +27,7 @@ function Login () {
   };
 
   // valeurs entrée par l'utilisateur sont stcké ici
-  const [nomEntree,setNomEntree] = useState(''); 
+  const [nasEntree,setNasEntree] = useState(''); 
   const [passEntree,setPassEntree] = useState(''); 
 
   const [verif,setVerif] = useState(''); 
@@ -47,7 +47,7 @@ function Login () {
     for(let i=0;i<n;i++ ){
 
       //redirige vers la page d'acceuil si les information entrées sont bonne
-      if(nomEntree==clientPass[i].nomcomplet){
+      if(nasEntree==clientPass[i].nas_client){
         if(passEntree==clientPass[i].motdepasse){
 
           //efface les precedantes valeurs 
@@ -55,6 +55,8 @@ function Login () {
           // stock le compte pour pouvoir etre utilisé par les autres pages
           sessionStorage.setItem("compte", JSON.stringify(clientPass[i]));
           sessionStorage.setItem("connectee", "connecte");
+
+          //efface le message d'erreur
           setVerif("")
 
 
@@ -91,8 +93,7 @@ function Login () {
               type="text"
               class="form-control"
               id="exampleInputEmail1"
-              onChange={(e)=>setNomEntree(e.target.value)}
-              aria-describedby="emailHelp"
+              onChange={(e)=>setNasEntree(e.target.value)}
               placeholder="Entrer votre NAS"
             />
           </div>
