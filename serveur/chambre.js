@@ -109,5 +109,5 @@ module.exports = {
   createClient,
   deleteChambre,
   deleteClient,
-  getClient,
+  
 };
