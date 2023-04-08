@@ -1,7 +1,17 @@
 import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
 
+function Login () {
+
+  // permet le changement de page (vers la home page)
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = '/'; 
+    navigate(path);
+  }
+
+  // obtient les informations de la table client
   const [clientPass, setclientPass] = useState([]);
   useEffect(() => {
     getClientPass();
@@ -16,31 +26,56 @@ const Login = () => {
     }
   };
 
+  // valeurs entrée par l'utilisateur sont stcké ici
   const [nomEntree,setNomEntree] = useState(''); 
   const [passEntree,setPassEntree] = useState(''); 
+
+  const [verif,setVerif] = useState(''); 
+
+  // obtient la longueur de la table clientPass
   let n = clientPass.length;
 
 
+  // fonction appelée suite a la soumission du formulaire
   const handleSubmit = (e) => {
+
+    // empeche la page de s'actualiser a chaque foie qu'on clique sur le boutton
     e.preventDefault();
-    let retour = false
     
+    
+    // la boucle parcour les lignes de la table client (clientPass) 
     for(let i=0;i<n;i++ ){
+
+      //redirige vers la page d'acceuil si les information entrées sont bonne
       if(nomEntree==clientPass[i].nomcomplet){
         if(passEntree==clientPass[i].motdepasse){
-          retour = true
 
-          // envoie le compte a l'autre page 
-          sessionStorage.setItem("compte", JSON.stringify(clientPass));
+          //efface les precedantes valeurs 
+          sessionStorage.clear();
+          // stock le compte pour pouvoir etre utilisé par les autres pages
+          sessionStorage.setItem("compte", JSON.stringify(clientPass[i]));
+          sessionStorage.setItem("connectee", "connecte");
+          setVerif("")
+
+
+          //appel la const routechange qui redirige vers la homepage
+          routeChange();
           
-
         }
+        else{
+          setVerif("Nom d'utilisateur ou mot de passe incorrect")
+        }
+      }
+      else{
+          setVerif("Nom d'utilisateur ou mot de passe incorrect")
       }
     }
   }
+
   
   return (
     <div class="loginpage">
+      
       <div class="pageheader">
         <h1>Connectez vous a votre compte</h1>
       </div>
@@ -51,7 +86,7 @@ const Login = () => {
         </div>
         <form class="emailpwforms" onSubmit={handleSubmit}>
           <div class="emailForm form-group">
-            <label for="exampleInputEmail1">Nom Complet</label>
+            <label for="exampleInputEmail1">NAS</label>
             <input
               type="text"
               class="form-control"
@@ -76,6 +111,8 @@ const Login = () => {
             <button type="submit" class="btn btn-primary">
               Submit
             </button>
+            <p className="text-danger">{verif}</p>
+
           </div>
         </form>
       </div>

@@ -2,6 +2,17 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
 const Navbar = () => {
+
+  function deco (){
+
+    //efface le compte connecté du stockage et change le status connecte a deconnecté
+    sessionStorage.clear();
+    sessionStorage.setItem("connectee", "deconnecte");
+    sessionStorage.setItem("nomcomplet", "");
+    sessionStorage.setItem("nas", "");
+
+
+  }
   return (
     <nav
       className="navbar navbar-expand-lg bg-body-tertiary bg-dark"
@@ -43,6 +54,14 @@ const Navbar = () => {
               <a className="nav-link text-light" href="/Register">
                 S'inscrire
               </a>
+            </li>
+            <li className="nav-item">
+              
+              <a className="nav-link text-light" href="/" onClick={deco}>
+                Deconnexion
+              </a>
+
+              
             </li>
 
           </ul>
