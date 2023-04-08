@@ -6,7 +6,7 @@ import FiltreTout from "./composants/FiltreTout";
 function Home() {
 
   //recupère le compte du stockage
-  let co = sessionStorage.getItem("connectee");
+  let co = sessionStorage.getItem("status");
   let nom="";
   
   if (co==="connecte"){

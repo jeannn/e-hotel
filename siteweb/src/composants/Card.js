@@ -1,13 +1,28 @@
 import React from "react";
 import image1 from "../images/image1.jpg";
-import image2 from "../images/image2.jpeg";
-import image3 from "../images/image3.jpeg";
-import image4 from "../images/image4.jpeg";
 
 const Card = ({ chambre }) => {
-  //Fonction JS pour rediriger vers la page de reservation
-  function navigateToOtherPage() {
+  //rediriger vers la page de reservation
+  function navigateToReservation() {
     window.location.href = "./Reservation";
+  }
+
+  //rediriger vers home
+  function navigateToConnection() {
+    window.location.href = "./Login";
+  }
+
+  function reserver (){
+    let co = sessionStorage.getItem("status");
+
+    //si l'utilisateur est connecté, l'envoie a la page de reservation, sinon l'envoie a la page de connection
+    if (co === "connecte"){
+      navigateToReservation()
+    }
+    else{
+      navigateToConnection()
+    }
+
   }
   return (
     <>
@@ -19,7 +34,7 @@ const Card = ({ chambre }) => {
               <img
                 src={image1}
                 className="img-fluid rounded"
-                alt="Room Image"
+                alt="Chambre "
               />
             </div>
             <div className="col-md-7">
@@ -54,7 +69,7 @@ const Card = ({ chambre }) => {
                 Prix: <b>{val.prix}$</b>
               </h5>
 
-              <button class="learn-more" onClick={navigateToOtherPage}>
+              <button class="learn-more" onClick={reserver}>
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>

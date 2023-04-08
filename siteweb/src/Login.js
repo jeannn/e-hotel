@@ -47,14 +47,14 @@ function Login () {
     for(let i=0;i<n;i++ ){
 
       //redirige vers la page d'acceuil si les information entrées sont bonne
-      if(nasEntree==clientPass[i].nas_client){
-        if(passEntree==clientPass[i].motdepasse){
+      if(nasEntree===clientPass[i].nas_client){
+        if(passEntree===clientPass[i].motdepasse){
 
           //efface les precedantes valeurs 
           sessionStorage.clear();
           // stock le compte pour pouvoir etre utilisé par les autres pages
           sessionStorage.setItem("compte", JSON.stringify(clientPass[i]));
-          sessionStorage.setItem("connectee", "connecte");
+          sessionStorage.setItem("status", "connecte");
 
           //efface le message d'erreur
           setVerif("")

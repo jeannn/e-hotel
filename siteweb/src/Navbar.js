@@ -7,7 +7,7 @@ const Navbar = () => {
 
     //efface le compte connecté du stockage et change le status connecte a deconnecté
     sessionStorage.clear();
-    sessionStorage.setItem("connectee", "deconnecte");
+    sessionStorage.setItem("status", "deconnecte");
 
   }
   return (
