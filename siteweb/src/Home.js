@@ -9,7 +9,7 @@ function Home() {
   let co = sessionStorage.getItem("connectee");
   let nom="";
   
-  if (co=="connecte"){
+  if (co==="connecte"){
     let x = sessionStorage.getItem("compte");
     let compte = JSON.parse(x);
     nom = compte.nomcomplet
