@@ -1,29 +1,63 @@
+import { useState } from "react";
+
 const Reservation = () => {
-  function generateRandomID() {
-    const digits = "0123456789";
-    let id = "";
+  
+  //recupération de la chambre 
+  let x = sessionStorage.getItem("chambre");
+  let chambre = JSON.parse(x)
 
-    for (let i = 0; i < 5; i++) {
-      const randomIndex = Math.floor(Math.random() * digits.length);
-      id += digits[randomIndex];
+  //recupération du client
+  let y = sessionStorage.getItem("compte");
+  let client = JSON.parse(y);
+
+  const [date,setdate]=useState('');
+
+  
+
+  const soumettre = async e =>{
+    
+    let a = chambre.numchambre;
+    let b = date;
+    let c = client.nas_client;
+    let reservation = {a,b,c}
+    alert(reservation.c)
+    try {
+    const response = await fetch('http://localhost:8081/reservation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reservation),
+    })
+      .then(() => {
+        // setSucce('Compte crée avec succès')
+        // setMessage('')
+        console.log(response);
+      })
+      
     }
-
-    return id;
+    catch(err) {
+      // setMessage('Création de compte imposibble')
+      // setSucce('')
+    }
   }
+  
+
 
   return (
     <div className="reservepage">
       <div className="reservForm">
         <h1 className="reservtitle text-center">Réservez votre chambre</h1>
-        <form action="" className="form">
+        <form action="" className="form" onSubmit={soumettre}>
           <div className="reserveformgroup form-group">
             <div className="inputdivs">
               <label for="exampleFormControlInput1">Nom d'hôtel</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control disabled"
                 id="exampleFormControlInput1"
-                placeholder="Nom d'hôtel"
+                placeholder={chambre.nomhotel}
+                disabled
               />
             </div>
 
@@ -33,7 +67,7 @@ const Reservation = () => {
                 type="number"
                 className="form-control disabled"
                 id="exampleFormControlInput1"
-                placeholder={generateRandomID()}
+                placeholder={chambre.numchambre}
                 disabled
               />
             </div>
@@ -44,7 +78,8 @@ const Reservation = () => {
                 type="number"
                 className="form-control"
                 id="exampleFormControlInput1"
-                placeholder="XXXXXXXXX"
+                placeholder={client.nas_client}
+                disabled
               />
             </div>
 
@@ -54,27 +89,19 @@ const Reservation = () => {
                 type="tel"
                 className="form-control"
                 id="exampleFormControlInput1"
-                placeholder="(XXX) XXX-XXXX"
+                placeholder={client.numtelclient}
+                disabled
               />
             </div>
-
-            <div className="inputdivs">
-              <label for="exampleFormControlInput1">Date d'arrivée</label>
-              <input
-                type="date"
-                className="form-control"
-                id="exampleFormControlInput1"
-                placeholder="Date d'arrivée"
-              />
-            </div>
-
+                        
             <div className="inputdivs">
               <label for="exampleFormControlInput1">Type de chambre</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control disabled"
                 id="exampleFormControlInput1"
-                placeholder="Type de chambre"
+                placeholder={chambre.capacite}
+                disabled
               />
             </div>
 
@@ -82,9 +109,23 @@ const Reservation = () => {
               <label for="exampleFormControlInput1">Nombre de nuits</label>
               <input
                 type="number"
+                className="form-control disabled"
+                id="exampleFormControlInput1"
+                placeholder="1"
+                disabled
+              />
+            </div>
+                                    
+            <div className="inputdivs">
+              <label for="exampleFormControlInput1">Choisir une date</label>
+              <input
+                type="date"
                 className="form-control"
                 id="exampleFormControlInput1"
-                placeholder="Nombre de nuits"
+                // la fonction onchange met a jour la valeur de la variable date chaque foie qu'elle change
+                onChange={(e)=>setdate(e.target.value)}
+                placeholder="Date d'arrivée"
+                required
               />
             </div>
 
@@ -92,11 +133,13 @@ const Reservation = () => {
               <label for="exampleFormControlInput1">Prix total</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control disabled"
                 id="exampleFormControlInput1"
-                placeholder="Prix total"
+                placeholder={chambre.prix+"$"}
+                disabled
               />
             </div>
+                        
             <div>
               <button type="submit" class="btn btn-primary">
                 Réserver

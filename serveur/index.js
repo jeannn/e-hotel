@@ -89,6 +89,16 @@ datares.get("/", (req, res) => {
       res.status(500).send(error);
     });
 });
+datares.post("/reservation", (req, res) => {
+  chambre
+    .createRes(req.body)
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
 datares.listen(portres, () => {
   console.log(`App running on port ${portres}.`);
 });
