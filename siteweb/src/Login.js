@@ -10,6 +10,10 @@ function Login () {
     let path = '/'; 
     navigate(path);
   }
+  const pageChange = () =>{ 
+    let chemin = '/empco'; 
+    navigate(chemin);
+  }
 
   // obtient les informations de la table client
   const [clientPass, setclientPass] = useState([]);
@@ -116,7 +120,9 @@ function Login () {
 
           </div>
         </form>
+        
       </div>
+      <button className="text-primary" onClick={pageChange}>connexion employé</button>
     </div>
   );
 };

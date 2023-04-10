@@ -4,7 +4,7 @@ const dataClient = express();
 const datares = express();
 const port3001 = 3001;
 const port8080 = 8080;
-const portres = 8081;
+const portres = 44349;
 
 const chambre = require("./chambre");
 
@@ -89,7 +89,7 @@ datares.get("/", (req, res) => {
       res.status(500).send(error);
     });
 });
-datares.post("/reservation", (req, res) => {
+datares.post("/reservations", (req, res) => {
   chambre
     .createRes(req.body)
     .then((response) => {

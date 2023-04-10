@@ -36,6 +36,10 @@ create table reservation (reservation_id varchar(5),dateReserve varchar(10),NAS_
 					  foreign key (NAS_Client) references client(NAS_Client),
 					  foreign key (reservation_id) references chambre(numchambre));
 
+CREATE INDEX numchambre_index ON chambre (numchambre);
+CREATE INDEX client_index ON client (nas_client);
+CREATE INDEX res_index ON reservation (reservation_id);
+
 insert into chainehotel values ('oasis','4184184181',8,'oasis@mail.com','55 rue existante');
 insert into chainehotel values ('Grande Line','4184184182',8,'gline@mail.com','53 rue inexistante');
 insert into chainehotel values ('New World','4184184183',8,'nworld@mail.com','53 rue charlie');

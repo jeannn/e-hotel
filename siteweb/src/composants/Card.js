@@ -30,6 +30,9 @@ const Card = ({ chambre }) => {
     else if(co==="deconnecte"){
       navigateToConnection()
     }
+    else{
+      navigateToConnection()
+    }
 
   }
 

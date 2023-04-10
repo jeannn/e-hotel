@@ -4,46 +4,40 @@ const Reservation = () => {
   
   //recupération de la chambre 
   let x = sessionStorage.getItem("chambre");
-  let chambre = JSON.parse(x)
+  let chambres = JSON.parse(x)
 
   //recupération du client
   let y = sessionStorage.getItem("compte");
-  let client = JSON.parse(y);
+  let clients = JSON.parse(y);
 
   const [date,setdate]=useState('');
+  const [client,setClient]=useState('');
+  const [chambre,setChambre]=useState('');
 
-  
+     
 
   const soumettre = async e =>{
     
-    let a = chambre.numchambre;
-    let b = date;
-    let c = client.nas_client;
-    let reservation = {a,b,c}
-    alert(reservation.c)
+    setChambre(chambres.numchambre);
+    setClient(clients.nas_client)
+    const reservation = {chambre,date,client}
     try {
-    const response = await fetch('http://localhost:8081/reservation', {
+    const response = await fetch('http://localhost:44349/reservations', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(reservation),
-    })
-      .then(() => {
-        // setSucce('Compte crée avec succès')
-        // setMessage('')
-        console.log(response);
+    }).then(() => {
+        alert("oui")
       })
       
     }
     catch(err) {
-      // setMessage('Création de compte imposibble')
-      // setSucce('')
+      alert(err)
     }
   }
   
-
-
   return (
     <div className="reservepage">
       <div className="reservForm">
@@ -56,7 +50,7 @@ const Reservation = () => {
                 type="text"
                 className="form-control disabled"
                 id="exampleFormControlInput1"
-                placeholder={chambre.nomhotel}
+                placeholder={chambres.nomhotel}
                 disabled
               />
             </div>
@@ -67,7 +61,8 @@ const Reservation = () => {
                 type="number"
                 className="form-control disabled"
                 id="exampleFormControlInput1"
-                placeholder={chambre.numchambre}
+                placeholder={chambres.numchambre}
+                
                 disabled
               />
             </div>
@@ -78,7 +73,7 @@ const Reservation = () => {
                 type="number"
                 className="form-control"
                 id="exampleFormControlInput1"
-                placeholder={client.nas_client}
+                placeholder={clients.nas_client}
                 disabled
               />
             </div>
@@ -89,7 +84,7 @@ const Reservation = () => {
                 type="tel"
                 className="form-control"
                 id="exampleFormControlInput1"
-                placeholder={client.numtelclient}
+                placeholder={clients.numtelclient}
                 disabled
               />
             </div>
@@ -100,7 +95,7 @@ const Reservation = () => {
                 type="text"
                 className="form-control disabled"
                 id="exampleFormControlInput1"
-                placeholder={chambre.capacite}
+                placeholder={chambres.capacite}
                 disabled
               />
             </div>
@@ -135,7 +130,7 @@ const Reservation = () => {
                 type="text"
                 className="form-control disabled"
                 id="exampleFormControlInput1"
-                placeholder={chambre.prix+"$"}
+                placeholder={chambres.prix+"$"}
                 disabled
               />
             </div>

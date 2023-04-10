@@ -51,7 +51,7 @@ const getEmploye = () => {
 const getreservationlocation = () => {
   return new Promise(function (resolve, reject) {
     pool.query(
-      "SELECT * FROM reservation natural join locations",
+      "SELECT * FROM reservation",
       (error, results) => {
         if (error) {
           reject(error);
