@@ -62,7 +62,7 @@ The UI was designed to be intuitive and **SQL-free** for end users, using web fo
 ## ⚙️ Technologies Used
 - **Database:** PostgreSQL  
 - **Server:** Apache Tomcat  
-- **Languages:** SQL / Java, HTML  
+- **Languages:** SQL / Java, react
 - **Tools:** pgAdmin  
 - **Version Control:** Git  
 
