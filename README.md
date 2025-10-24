@@ -75,7 +75,7 @@ The UI was designed to be intuitive and **SQL-free** for end users, using web fo
 - Justification for design decisions and constraints  
 
 ### 2️⃣ Second Deliverable
-- Full SQL implementation (DDL, DML, triggers, and views)  
+- Full SQL implementation (DML, triggers, and views)  
 - Source code for the user interface  
 - Setup instructions and demonstration guide  
 
