@@ -1,10 +1,10 @@
-# 🏨 e-Hôtels — Database Management System Project
+# 🏨 e-Hôtels Database Management System Project
 
 ## 🧾 Overview
-**e-Hôtels** is a relational database application developed as part of the **CSI2532 – Database I** course at the **University of Ottawa** (Winter 2023).  
+**e-Hôtels** is a relational database application developed as part of the **CSI2532  Database I** course at the **University of Ottawa** (Winter 2023).  
 The goal was to design and implement a complete **hotel management system** that allows clients to search, book, and rent rooms in real time, while maintaining integrity, normalization, and usability through SQL and database design principles.
 
-This project covered the full database development cycle — from conceptual modeling to implementation and front-end interaction.
+This project covered the full database development cycle from conceptual modeling to implementation and front-end interaction.
 
 ---
 
