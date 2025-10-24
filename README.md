@@ -21,7 +21,9 @@ This project covered the full database development cycle from conceptual modelin
 ## 🧩 Key Features
 
 ### 🔹 Database Design
-- **E-R Diagram:** Represents hotel chains, hotels, rooms, employees, and clients with correct relationships and constraints.  
+- **E-R Diagram:** Represents hotel chains, hotels, rooms, employees, and clients with correct relationships and constraints.
+  <img width="656" height="628" alt="image" src="https://github.com/user-attachments/assets/a69675f8-b338-4d37-aa6d-f7ca06fa41e0" />
+  
 - **Relational Schema:** Includes all entity and relationship mappings with normalization to avoid redundancy.  
 - **Integrity Constraints:**  
   - Referential integrity between hotels, rooms, and chains.  
